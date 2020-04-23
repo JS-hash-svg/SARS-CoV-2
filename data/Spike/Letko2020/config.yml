@@ -1,0 +1,5 @@
+# Config file for building the `dms-view` dataset
+unaligned_seqs: 'Spikes.fasta'
+ref_seq: 'SARS-CoV-2_MN908947'
+spike_pdb: '6vyb.pdb'
+chains: 'B'

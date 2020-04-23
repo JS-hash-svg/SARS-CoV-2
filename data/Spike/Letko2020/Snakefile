@@ -1,0 +1,52 @@
+"""``snakemake`` file that runs entire analysis."""
+
+# Imports ---------------------------------------------------------------------
+import pandas as pd
+from snakemake.utils import min_version
+min_version("3.2")
+
+# Configuration  --------------------------------------------------------------
+
+configfile: 'config.yml'
+AAs = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q',
+       'R', 'S', 'T', 'V', 'W', 'Y', '-']
+
+# Target rules ---------------------------------------------------------------
+
+rule all:
+    input:
+        'results/Letko2020_spike.csv'
+
+rule align_seqs_to_protein:
+    message: 'align sequences to pdb with pdb_prot_align'
+    input:
+        seqs = 'Spikes.fasta',
+        pdb = config['spike_pdb']
+    output:
+        output = 'results/prot_map_sites.csv'
+    params:
+        ref_seq = config['ref_seq'],
+        chains = config['chains'],
+        output = 'results/prot_map'
+    shell:
+        'pdb_prot_align --protsfile {input.seqs}'
+        ' --refprot_regex {params.ref_seq} --pdbfile {input.pdb} '
+        '--chain_ids {params.chains} --outprefix {params.output}'
+
+rule datafile:
+    message: 'create dms-view datafile'
+    input:
+        pdb_map = 'results/prot_map_sites.csv'
+    output:
+        output = 'results/Letko2020_spike.csv'
+    run:
+        df = pd.read_csv(input.pdb_map)
+        df = (df.drop(columns=['pdb_wildtype'])
+                .rename(columns={'isite': 'site',
+                                 'entropy': 'site_entropy',
+                                 'n_effective': 'site_n_effective',
+                                 'frequency': 'mut_frequency',
+                                 'amino_acid': 'mutation'}))
+        df['condition'] = 'natural frequencies'
+        df['label_site'] = df['site']
+        df.to_csv(output.output, index=False)
