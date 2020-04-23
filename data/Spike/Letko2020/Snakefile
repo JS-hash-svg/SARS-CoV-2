@@ -15,28 +15,45 @@ AAs = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q',
 
 rule all:
     input:
-        'results/Letko2020_spike.csv'
+        'results/Letko2020_spike.csv',
+        'results/Letko2020_rbd.csv'
 
-rule align_seqs_to_protein:
+rule align_seqs_to_spike:
     message: 'align sequences to pdb with pdb_prot_align'
     input:
         seqs = 'Spikes.fasta',
         pdb = config['spike_pdb']
     output:
-        output = 'results/prot_map_sites.csv'
+        output = 'results/prot_map_spike_sites.csv'
     params:
         ref_seq = config['ref_seq'],
-        chains = config['chains'],
-        output = 'results/prot_map'
+        chains = config['spike_chains'],
+        output = 'results/prot_map_spike'
     shell:
         'pdb_prot_align --protsfile {input.seqs}'
         ' --refprot_regex {params.ref_seq} --pdbfile {input.pdb} '
         '--chain_ids {params.chains} --outprefix {params.output}'
 
-rule datafile:
+rule align_seqs_to_rbd:
+    message: 'align sequences to pdb with pdb_prot_align'
+    input:
+        seqs = 'Spikes.fasta',
+        pdb = config['rbd_pdb']
+    output:
+        output = 'results/prot_map_rbd_sites.csv'
+    params:
+        ref_seq = config['ref_seq'],
+        chains = config['rbd_chains'],
+        output = 'results/prot_map_rbd'
+    shell:
+        'pdb_prot_align --protsfile {input.seqs}'
+        ' --refprot_regex {params.ref_seq} --pdbfile {input.pdb} '
+        '--chain_ids {params.chains} --outprefix {params.output}'
+
+rule datafile_spike:
     message: 'create dms-view datafile'
     input:
-        pdb_map = 'results/prot_map_sites.csv'
+        pdb_map = 'results/prot_map_spike_sites.csv'
     output:
         output = 'results/Letko2020_spike.csv'
     run:
@@ -52,4 +69,31 @@ rule datafile:
         df['protein_site'] = df['protein_site'].astype('Int64')
         df['condition'] = 'natural frequencies'
         df['label_site'] = df['site']
+        df.to_csv(output.output, index=False)
+
+rule datafile_rbd:
+    message: 'create dms-view datafile'
+    input:
+        pdb_map = 'results/prot_map_rbd_sites.csv'
+    output:
+        output = 'results/Letko2020_rbd.csv'
+    run:
+        df = pd.read_csv(input.pdb_map)
+        df = (df.drop(columns=['pdb_wildtype'])
+                .rename(columns={'isite': 'site',
+                                 'entropy': 'site_entropy',
+                                 'n_effective': 'site_n_effective',
+                                 'frequency': 'mut_frequency',
+                                 'amino_acid': 'mutation',
+                                 'pdb_site': 'protein_site',
+                                 'pdb_chain': 'protein_chain'}))
+        df['protein_site'] = df['protein_site'].astype('Int64')
+        df['condition'] = 'natural frequencies'
+        df['label_site'] = df['site']
+        # cut to just RBD domain
+        start_site = int(config['rbd_start'][1:])
+        end_site = int(config['rbd_end'][1:])
+        assert df[df.site == start_site]['wildtype'].iloc[0] == config['rbd_start'][0]
+        assert df[df.site == end_site]['wildtype'].iloc[0] == config['rbd_end'][0]
+        df = df[df['site'].isin(range(start_site, end_site + 1))]
         df.to_csv(output.output, index=False)
