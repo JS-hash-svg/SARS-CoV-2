@@ -10,4 +10,4 @@ At the mutation level, we show the frequency of each amino acid in this alignmen
 At the site level, we show the entropy and number of effective amino acids for each site based on the amino-acid frequencies from this alignment.
 
 We are displaying this data on the spike structure [6vyb.pdb](https://www.rcsb.org/structure/6VYB).
-The full alignment we used can be found [HERE](github.com/dms-view/).
+The full alignment we used can be found [HERE](https://github.com/dms-view/SARS-CoV-2/blob/master/data/Spike/Letko2020/results/Letko2020_spike.csv).
