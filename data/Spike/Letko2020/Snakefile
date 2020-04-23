@@ -49,6 +49,7 @@ rule datafile:
                                  'amino_acid': 'mutation',
                                  'pdb_site': 'protein_site',
                                  'pdb_chain': 'protein_chain'}))
+        df['protein_site'] = df['protein_site'].astype('Int64')
         df['condition'] = 'natural frequencies'
         df['label_site'] = df['site']
         df.to_csv(output.output, index=False)
