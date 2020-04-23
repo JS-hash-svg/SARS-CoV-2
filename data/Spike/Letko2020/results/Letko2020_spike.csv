@@ -1,4 +1,4 @@
-site,wildtype,pdb_chain,pdb_site,site_entropy,site_n_effective,mutation,mut_frequency,condition,label_site
+site,wildtype,protein_chain,protein_site,site_entropy,site_n_effective,mutation,mut_frequency,condition,label_site
 1,M,,,0.88869,1.85149,A,0.0,natural frequencies,1
 1,M,,,0.88869,1.85149,C,0.0,natural frequencies,1
 1,M,,,0.88869,1.85149,D,0.0,natural frequencies,1

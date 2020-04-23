@@ -46,7 +46,9 @@ rule datafile:
                                  'entropy': 'site_entropy',
                                  'n_effective': 'site_n_effective',
                                  'frequency': 'mut_frequency',
-                                 'amino_acid': 'mutation'}))
+                                 'amino_acid': 'mutation',
+                                 'pdb_site': 'protein_site',
+                                 'pdb_chain': 'protein_chain'}))
         df['condition'] = 'natural frequencies'
         df['label_site'] = df['site']
         df.to_csv(output.output, index=False)
