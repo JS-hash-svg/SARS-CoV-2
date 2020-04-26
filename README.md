@@ -4,7 +4,7 @@
 
 ### Spike
 
-* [./data/Spike/BloomLab2020](data/Spike/BloomLab2020) maps natural variation among SARS-like coronavirus isolates from human, bat, and other host species onto Spike trimer and ACE2-bound RBD structures. Links to `dms-view` for [Spike - link forthcoming]() and [RBD - link forthcoming]() visualizations.
+* [./data/Spike/BloomLab2020](data/Spike/BloomLab2020) maps natural variation among SARS-like coronavirus isolates from human, bat, and other host species onto Spike trimer and ACE2-bound RBD structures. Links to `dms-view` for [Spike](https://dms-view.github.io/?pdb-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2F6vyb.pdb&markdown-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2FBloomLab_spike.md&data-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2Fresults%2FBloomLab2020_spike.csv&condition=natural+frequencies&site_metric=site_entropy&mutation_metric=mut_frequency&selected_sites=) and [RBD](https://dms-view.github.io/?pdb-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2F6m0j.pdb&markdown-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2FBloomLab_rbd.md&data-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2Fresults%2FBloomLab2020_rbd.csv&condition=natural+frequencies&site_metric=site_entropy&mutation_metric=mut_frequency&selected_sites=) visualizations.
 
 ## Adding data sets
 
