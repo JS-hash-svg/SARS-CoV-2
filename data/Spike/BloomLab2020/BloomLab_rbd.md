@@ -1,4 +1,4 @@
-### Natural sequence variation of sarbecovirus Spike
+### Natural sequence variation of sarbecovirus Spike S<sub>B</sub> Receptor Binding Domain
 
 We assembled an alignment of coronavirus Spike proteins from the sarbecovirus clade, which includes SARS-CoV, SARS-CoV-2, and related viruses identified in bats and other host species. The full alignment we used can be found [HERE](https://github.com/dms-view/SARS-CoV-2/blob/master/data/Spike/BloomLab2020/results/prot_map_rbd_alignment.fa). Our sequence selections include:
 * The set of 30 sequences from [Letko, Marzi, and Munster (2020)](https://www.nature.com/articles/s41564-020-0688-y), which contained all known unique RBD sequences at the time of its publication. See [Extended Data Fig 1](https://www.nature.com/articles/s41564-020-0688-y/figures/6) for more information. 
