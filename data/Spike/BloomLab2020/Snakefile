@@ -15,8 +15,8 @@ AAs = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q',
 
 rule all:
     input:
-        'results/Letko2020_spike.csv',
-        'results/Letko2020_rbd.csv'
+        'results/BloomLab2020_spike.csv',
+        'results/BloomLab2020_rbd.csv'
 
 rule align_seqs_to_spike:
     message: 'align sequences to pdb with pdb_prot_align'
@@ -55,7 +55,7 @@ rule datafile_spike:
     input:
         pdb_map = 'results/prot_map_spike_sites.csv'
     output:
-        output = 'results/Letko2020_spike.csv'
+        output = 'results/BloomLab2020_spike.csv'
     run:
         df = pd.read_csv(input.pdb_map)
         df = (df.drop(columns=['pdb_wildtype'])
@@ -76,7 +76,7 @@ rule datafile_rbd:
     input:
         pdb_map = 'results/prot_map_rbd_sites.csv'
     output:
-        output = 'results/Letko2020_rbd.csv'
+        output = 'results/BloomLab2020_rbd.csv'
     run:
         df = pd.read_csv(input.pdb_map)
         df = (df.drop(columns=['pdb_wildtype'])
