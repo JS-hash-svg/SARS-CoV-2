@@ -19,7 +19,7 @@ rule all:
         'results/BloomLab2020_rbd.csv'
 
 rule align_seqs_to_spike:
-    message: 'align sequences to pdb with pdb_prot_align'
+    message: 'align sequences to spike pdb with pdb_prot_align'
     input:
         seqs = 'Spikes.fasta',
         pdb = config['spike_pdb']
@@ -35,7 +35,7 @@ rule align_seqs_to_spike:
         '--chain_ids {params.chains} --outprefix {params.output}'
 
 rule align_seqs_to_rbd:
-    message: 'align sequences to pdb with pdb_prot_align'
+    message: 'align sequences to rbd pdb with pdb_prot_align'
     input:
         seqs = 'Spikes.fasta',
         pdb = config['rbd_pdb']
