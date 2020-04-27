@@ -75,7 +75,7 @@ rule datafile_spike:
         df['protein_site'] = df['protein_site'].astype('Int64')
         df['condition'] = 'natural frequencies'
         df['label_site'] = df['site']
-        df['pdb_chain'] = params.chains_viz
+        df['protein_chain'] = params.chains_viz
         df.to_csv(output.output, index=False)
 
 rule datafile_rbd:
