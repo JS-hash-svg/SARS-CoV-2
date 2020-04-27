@@ -28,11 +28,13 @@ rule align_seqs_to_spike:
     params:
         ref_seq = config['ref_seq'],
         chains = config['spike_chains'],
-        output = 'results/prot_map_spike'
+        output = 'results/prot_map_spike',
+        mafft_call = config['mafft_call']
     shell:
         'pdb_prot_align --protsfile {input.seqs}'
         ' --refprot_regex {params.ref_seq} --pdbfile {input.pdb} '
-        '--chain_ids {params.chains} --outprefix {params.output}'
+        '--chain_ids {params.chains} --outprefix {params.output} '
+        '--mafft {params.mafft_call}'
 
 rule align_seqs_to_rbd:
     message: 'align sequences to rbd pdb with pdb_prot_align'
@@ -44,11 +46,13 @@ rule align_seqs_to_rbd:
     params:
         ref_seq = config['ref_seq'],
         chains = config['rbd_chains'],
-        output = 'results/prot_map_rbd'
+        output = 'results/prot_map_rbd',
+        mafft_call = config['mafft_call']
     shell:
         'pdb_prot_align --protsfile {input.seqs}'
         ' --refprot_regex {params.ref_seq} --pdbfile {input.pdb} '
-        '--chain_ids {params.chains} --outprefix {params.output}'
+        '--chain_ids {params.chains} --outprefix {params.output} '
+        '--mafft {params.mafft_call}'
 
 rule datafile_spike:
     message: 'create dms-view datafile'
