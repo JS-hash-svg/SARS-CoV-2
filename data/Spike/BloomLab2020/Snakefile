@@ -27,7 +27,7 @@ rule align_seqs_to_spike:
         output = 'results/prot_map_spike_sites.csv'
     params:
         ref_seq = config['ref_seq'],
-        chains = config['spike_chains'],
+        chains = config['spike_chains_align'],
         output = 'results/prot_map_spike',
         mafft_call = config['mafft_call']
     shell:
@@ -60,6 +60,8 @@ rule datafile_spike:
         pdb_map = 'results/prot_map_spike_sites.csv'
     output:
         output = 'results/BloomLab2020_spike.csv'
+    params:
+        chains_viz = config['spike_chains_viz']
     run:
         df = pd.read_csv(input.pdb_map)
         df = (df.drop(columns=['pdb_wildtype'])
@@ -73,6 +75,7 @@ rule datafile_spike:
         df['protein_site'] = df['protein_site'].astype('Int64')
         df['condition'] = 'natural frequencies'
         df['label_site'] = df['site']
+        df['pdb_chain'] = params.chains_viz
         df.to_csv(output.output, index=False)
 
 rule datafile_rbd:
