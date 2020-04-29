@@ -9,3 +9,5 @@ Here, we display sequence variability from this set of natural sequences on the 
 
 At the mutation level, we show the frequency of each amino acid in this alignment.
 At the site level, we show the entropy and number of effective amino acids for each site based on the amino-acid frequencies from this alignment.
+
+Check out a `dms-view` visualization zoomed in on the ACE2-bound RBD structure [here](https://dms-view.github.io/?pdb-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2F6m0j.pdb&markdown-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2FBloomLab_rbd.md&data-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2Fresults%2FBloomLab2020_rbd.csv&condition=natural+frequencies&site_metric=site_entropy&mutation_metric=mut_frequency&selected_sites=)

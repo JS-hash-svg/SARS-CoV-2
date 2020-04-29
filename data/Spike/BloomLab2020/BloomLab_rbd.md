@@ -13,3 +13,5 @@ Here, we display sequence variability from this set of natural sequences on the 
 At the mutation level, we show the frequency of each amino acid in this alignment.
 At the site level, we show the entropy and number of effective amino acids for each site based on the amino-acid frequencies from this alignment.
 
+Check out a `dms-view` visualization of the whole Spike trimer [here](https://dms-view.github.io/?pdb-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2F6vyb.pdb&markdown-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2FBloomLab_spike.md&data-url=https%3A%2F%2Fraw.githubusercontent.com%2Fdms-view%2FSARS-CoV-2%2Fmaster%2Fdata%2FSpike%2FBloomLab2020%2Fresults%2FBloomLab2020_spike.csv&condition=natural+frequencies&site_metric=site_entropy&mutation_metric=mut_frequency&selected_sites=)
+
